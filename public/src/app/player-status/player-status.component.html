@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Player Status - Game {{ gameID }}</h1>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <p class="col-sm-12 text-center">
+        <a [routerLink]="['/status/game/1']" routerLinkActive="active" class="btn btn-primary btn-large">Game 1</a> |
+        <a [routerLink]="['/status/game/2']" routerLinkActive="active" class="btn btn-primary btn-large">Game 2</a> |
+        <a [routerLink]="['/status/game/3']" routerLinkActive="active" class="btn btn-primary btn-large">Game 3</a>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <th>Team Name</th>
+      <th>Actions</th>
+    </thead>
+    <tr *ngFor="let player of playerList; let i = index">
+      <td>{{ player.name }}</td>
+      <td>
+        <button (click)="setPlaying(i)" [ngClass]="{'btn':true, 'btn-success':player.status[gameInd]>0, 'btn-light': player.status[gameInd]<=0 }">Playing</button>
+        <button (click)="setNotPlaying(i)" [ngClass]="{'btn':true, 'btn-danger':player.status[gameInd]<0, 'btn-light': player.status[gameInd]>=0 }">Not Playing</button>
+        <button (click)="setUnd(i)" [ngClass]="{'btn':true, 'btn-warning':player.status[gameInd]==0, 'btn-light': player.status[gameInd]!=0 }">Undecided</button>
+      </td>
+    </tr>
+  </table>
+</div>

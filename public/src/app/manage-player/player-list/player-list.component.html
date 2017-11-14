@@ -1,0 +1,12 @@
+<table class="table mx-auto table-striped table-bordered">
+  <thead>
+    <th>Player Name</th>
+    <th>Preferred Position</th>
+    <th>Actions</th>
+  </thead>
+  <tr *ngFor="let player of playerList; let i = index">
+    <td>{{ player.name }}</td>
+    <td>{{ player.position }}</td>
+    <td><button (click)="deletePlayer(i)" class="btn btn-danger btn-sm btn-block">DELETE</button></td>
+  </tr>
+</table>

@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-body">
+
+    <form (ngSubmit)="addNewPlayer(); playerForm.reset()" #playerForm="ngForm">
+      <div class= "form-row">
+        <div class="col-sm-3">
+          <p><label for="playerName">Player Name</label></p>
+        </div>
+        <div class="col-sm-9">
+          <p><input type="text" id="playerName" name="playerName" class="form-control" #name="ngModel" [(ngModel)]="newPlayer.name" required minlength="2"></p>
+        </div>
+      </div>
+      <div class="form-row" *ngIf="name.invalid && name.dirty">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-9">
+          <p *ngIf="name.errors.required" class="text-danger">Name is required. </p>
+          <p *ngIf="name.errors.minlength" class="text-danger">Minimum length for name is 2.</p>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-sm-3">
+          <p><label for="playerPos">Preferred Position</label></p>
+        </div>
+        <div class="col-sm-9">
+          <p><input type="text" id="playerPos" name="playerPos" class="form-control" #name="ngModel" [(ngModel)]="newPlayer.position"></p>
+        </div>
+      </div>
+      <div class="form-row" *ngIf="name.invalid && name.dirty">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-9">
+          <p *ngIf="name.errors.required" class="text-danger">Name is required. </p>
+          <p *ngIf="name.errors.minlength" class="text-danger">Minimum length for name is 2.</p>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-sm-12">
+          <p><input class="btn btn-success float-right" [disabled]="playerForm.invalid" type="submit" value="Add"></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
